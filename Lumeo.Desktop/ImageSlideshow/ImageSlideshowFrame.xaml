@@ -1,0 +1,75 @@
+﻿<UserControl
+    x:Class="Lumeo.Desktop.ImageSlideshow.ImageSlideshowFrame"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Lumeo.Desktop.ImageSlideshow"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ws="https://schemas.elecho.dev/wpfsuite"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    AllowDrop="True"
+    Background="Transparent"
+    Drop="UserControl_Drop"
+    MouseEnter="UserControl_MouseEnter"
+    MouseLeave="UserControl_MouseLeave"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <Style TargetType="ws:Button">
+            <Setter Property="Foreground" Value="WhiteSmoke" />
+            <Setter Property="Background" Value="#0E0E0E" />
+            <Setter Property="HoverBackground" Value="#0E0E0E" />
+            <Setter Property="PressedBackground" Value="#0E0E0E" />
+            <Setter Property="Width" Value="32" />
+            <Setter Property="Height" Value="32" />
+            <Setter Property="FontFamily" Value="Segoe Fluent Icons" />
+            <Setter Property="CornerRadius" Value="16" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Cursor" Value="Hand" />
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Canvas>
+            <Image
+                x:Name="Img"
+                RenderOptions.BitmapScalingMode="HighQuality"
+                Stretch="Fill">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform x:Name="ImageScaleTransform" CenterX="0.5" CenterY="0.5" />
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+        </Canvas>
+        <Grid
+            x:Name="BtnGrid"
+            Height="60"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Bottom"
+            d:Opacity="1"
+            Background="Transparent"
+            MouseEnter="BtnGrid_MouseEnter"
+            MouseLeave="BtnGrid_MouseLeave"
+            Opacity="0">
+            <ws:Button
+                Margin="0,0,68,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Click="NewFrameBtn_Click"
+                Content="&#xe710;" />
+            <ws:Button
+                Margin="0,0,20,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Click="CloseBtn_Click"
+                Content="&#xe8bb;"
+                FontSize="8" />
+            <ws:Button
+                Margin="20,0,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Click="LockBtn_Click"
+                Content="&#xe72e;" />
+        </Grid>
+    </Grid>
+</UserControl>
