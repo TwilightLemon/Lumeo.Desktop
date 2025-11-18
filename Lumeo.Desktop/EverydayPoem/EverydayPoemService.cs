@@ -36,24 +36,21 @@ public class EverydayPoemService : ServiceBase
     public async Task Start()
     {
         ServiceInstance = this;
-        await config.Load();
+        await config.LoadAsync();
         IsRunning = true;
         mainWindow = new MainWindow(config.Data);
         var frame = new EverydayPoemFrame(config.Data);
         mainWindow.Content = frame;
         mainWindow.Closed += (s, e) =>
         {
-            IsRunning = false;
-            OnForceStop?.Invoke(this, EventArgs.Empty);
-            mainWindow = null;
-            _= config.Save();
+            _= config.SaveAsync();
         };
         mainWindow.Show();
     }
 
     public async Task Stop()
     {
-        await config.Save();
+        await config.SaveAsync();
         Dispose();
     }
 }

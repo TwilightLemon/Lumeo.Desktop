@@ -41,6 +41,7 @@ namespace Lumeo.Desktop.ImageSlideshow
             {
                 Img.Source = new BitmapImage(new Uri(Config.ImgPaths[Config.Index]));
             }
+            UserControl_MouseLeave(null!,null!);
             ResetImageSize();
         }
 
@@ -78,7 +79,6 @@ namespace Lumeo.Desktop.ImageSlideshow
 
         private Point? _lastDragPoint, _mouseDownPoint;
         private bool _isManipulating = false;
-        private Point _manipulationStartCenter;
 
         private void UserControl_Drop(object sender, DragEventArgs e)
         {
@@ -271,7 +271,6 @@ namespace Lumeo.Desktop.ImageSlideshow
         private void UserControl_ManipulationStarted(object? sender, ManipulationStartedEventArgs e)
         {
             _isManipulating = true;
-            _manipulationStartCenter = e.ManipulationOrigin;
             e.Handled = true;
         }
 

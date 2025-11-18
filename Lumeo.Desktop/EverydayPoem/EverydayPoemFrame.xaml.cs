@@ -17,15 +17,15 @@ namespace Lumeo.Desktop.EverydayPoem
 
         private async void Init()
         {
-            TitleTb.Text = Config.Title;
-            AuthorTb.Text = Config.Author;
-            ContentTb.Text = Config.Content;
             if (Config.UpdatedTime != DateOnly.FromDateTime(DateTime.Now))
             {
                // Update data
                 await UpdatePoemDataAsync();
-                Config.UpdatedTime = DateOnly.FromDateTime(DateTime.Now);
             }
+            TitleTb.Text = Config.Title;
+            AuthorTb.Text = Config.Author;
+            ContentTb.Text = Config.Content;
+            DateTb.Text = Config.UpdatedTime.ToShortDateString();
         }
 
         private async Task UpdatePoemDataAsync()
@@ -36,9 +36,10 @@ namespace Lumeo.Desktop.EverydayPoem
        
                 if (poemData != null)
                 {
-                    TitleTb.Text=Config.Title = poemData.Title;
-                    AuthorTb.Text= Config.Author = poemData.Author;
-                    ContentTb.Text = Config.Content = poemData.Content;
+                    Config.Title = poemData.Title;
+                    Config.Author = poemData.Author;
+                    Config.Content = poemData.Content;
+                    Config.UpdatedTime = DateOnly.FromDateTime(DateTime.Now);
                 }
             }
             catch { }

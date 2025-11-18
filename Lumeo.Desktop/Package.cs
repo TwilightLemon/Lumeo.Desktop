@@ -20,7 +20,6 @@ public class Package : IPackage
 
 public class ImgSlideshowPlugin : IPlugin
 {
-    public IPackage? AcPackage { get; set; }
     internal const string PluginName = "Lumeo.Desktop.ImageSlideshowFrame";
 
     public string Name => PluginName;
@@ -37,7 +36,6 @@ public class ImgSlideshowPlugin : IPlugin
 
 public class EverydayPoemPlugin : IPlugin
 {
-    public IPackage? AcPackage { get; set; }
     internal const string PluginName = "Lumeo.Desktop.EverydayPoemFrame";
 
     public string Name => PluginName;

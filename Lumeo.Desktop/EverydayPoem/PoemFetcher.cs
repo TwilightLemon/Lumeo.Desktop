@@ -37,10 +37,12 @@ namespace Lumeo.Desktop.EverydayPoem
                 }
 
                 // 提取作者 - 查找dynasty后面的作者链接
-                var authorMatch = Regex.Match(html, @"dynasty_id=\d+"">.*?</a>.*?<span>·</span>.*?<a[^>]*>(.*?)</a>", RegexOptions.Singleline);
+                var authorMatch = Regex.Match(html, @"dynasty_id=\d+"">(.*?)</a>.*?<span>·</span>.*?<a[^>]*>(.*?)</a>", RegexOptions.Singleline);
                 if (authorMatch.Success)
                 {
-                    poemData.Author = DecodeHtml(authorMatch.Groups[1].Value.Trim());
+                    var dynasty = DecodeHtml(authorMatch.Groups[1].Value.Trim());
+                    var author = DecodeHtml(authorMatch.Groups[2].Value.Trim());
+                    poemData.Author= $"{dynasty} · {author}";
                 }
 
                 // 提取内容 - 在 line-clamp-8 的 div 中

@@ -13,7 +13,6 @@
     Foreground="{DynamicResource ForeColor}"
     mc:Ignorable="d">
     <UserControl.Resources>
-        <SolidColorBrush x:Key="ForeColor" Color="White" />
         <Style TargetType="ws:TextBox">
             <Setter Property="IsReadOnly" Value="True" />
             <Setter Property="Background" Value="Transparent" />
@@ -33,7 +32,7 @@
                 VerticalAlignment="Center"
                 FontFamily="Segoe UI"
                 FontSize="12">
-                <Run Text="2025 11 2" />
+                <Run x:Name="DateTb" Text="2025 11 2" />
                 <Run Text="·" />
                 <Run Text="每日一首" />
             </TextBlock>

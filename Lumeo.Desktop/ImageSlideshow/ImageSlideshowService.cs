@@ -64,7 +64,7 @@ public class ImageSlideshowService : ServiceBase
     public async Task Start()
     {
         ServiceInstance = this;
-        await config.Load();
+        await config.LoadAsync();
         IsRunning = true;
         if (config.Data.FrameConfigs.Count == 0)
         {
@@ -83,6 +83,6 @@ public class ImageSlideshowService : ServiceBase
     public async Task Stop()
     {
         Dispose();
-        await config.Save();
+        await config.SaveAsync();
     }
 }
